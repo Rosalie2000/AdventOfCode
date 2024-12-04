@@ -38,6 +38,4 @@ def solution_part_2():
 
     print(result)
 
-solution_part_1()
-solution_part_2()
 
