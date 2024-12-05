@@ -39,10 +39,20 @@ def solution_part_1():
     
     print(horizontal_count + vertical_count + diagonal1_count + diagonal2_count)    
 
-    # print(diagonal1)
 
 def solution_part_2():
-    pass
+    text, matrix = read_input()
 
-solution_part_1()
-solution_part_2()
+    x_mas_count = 0
+    x_mas = ['MAS', 'SAM']
+    
+    for r in range(1, len(matrix) - 1):
+        for c in range(1, len(matrix[r]) - 1):
+            if matrix[r][c] == 'A':
+                top_l_to_bottom_r = matrix[r-1][c-1] + matrix[r][c] + matrix[r+1][c+1]
+                bottom_l_to_top_r = matrix[r+1][c-1] + matrix[r][c] + matrix[r-1][c+1]
+
+                if top_l_to_bottom_r in x_mas and bottom_l_to_top_r in x_mas:
+                    x_mas_count += 1
+
+    print(x_mas_count)

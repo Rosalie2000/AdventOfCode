@@ -1,4 +1,4 @@
-import solutions.day03 as today
+import solutions.day04 as today
 
 if __name__ == '__main__':
     day = 3
