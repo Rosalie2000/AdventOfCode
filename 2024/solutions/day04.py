@@ -3,7 +3,7 @@ import re
 day = 'day04'
 
 def read_input():
-    with open(f'2024\inputs\{day}.txt', 'r') as file:
+    with open(f'AdventOFCode\\2024\inputs\{day}.txt', 'r') as file:
         input = file.readlines()
     
     matrix = [[char for char in line.strip()] for line in input]    
@@ -27,15 +27,15 @@ def get_diagonals(matrix):
 def solution_part_1():
     text, matrix = read_input()
     
-    horizontal_count = sum([len(re.findall(r"(XMAS|SAMX)", line)) for line in text])
+    horizontal_count = sum([len(re.findall(r"(?=XMAS|SAMX)", line)) for line in text])
     
     vertical = [[line[i] for line in matrix] for i in range(len(matrix[0]))]
         
-    vertical_count = sum([len(re.findall(r"(XMAS|SAMX)", ''.join(col))) for col in vertical])
+    vertical_count = sum([len(re.findall(r"(?=XMAS|SAMX)", ''.join(col))) for col in vertical])
     
     diagonal1, diagonal2 = get_diagonals(matrix)
-    diagonal1_count = sum([len(re.findall(r"(XMAS|SAMX)", ''.join(d))) for d in diagonal1])
-    diagonal2_count = sum([len(re.findall(r"(XMAS|SAMX)", ''.join(d))) for d in diagonal2])
+    diagonal1_count = sum([len(re.findall(r"(?=XMAS|SAMX)", ''.join(d))) for d in diagonal1])
+    diagonal2_count = sum([len(re.findall(r"(?=XMAS|SAMX)", ''.join(d))) for d in diagonal2])
     
     print(horizontal_count + vertical_count + diagonal1_count + diagonal2_count)    
 
